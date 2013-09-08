@@ -24,6 +24,9 @@
 		7834C52E17DD06130017E1AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7834C50917DD06130017E1AC /* UIKit.framework */; };
 		7834C53617DD06130017E1AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7834C53417DD06130017E1AC /* InfoPlist.strings */; };
 		7834C53817DD06130017E1AC /* SpriteWalkthroughTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C53717DD06130017E1AC /* SpriteWalkthroughTests.m */; };
+		7834C54317DD067A0017E1AC /* HelloScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C54217DD067A0017E1AC /* HelloScene.m */; };
+		7834C54617DD088B0017E1AC /* SpaceshipScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C54517DD088B0017E1AC /* SpaceshipScene.m */; };
+		7834C54817DD1F0E0017E1AC /* Asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7834C54717DD1F0E0017E1AC /* Asteroid.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,11 @@
 		7834C53317DD06130017E1AC /* SpriteWalkthroughTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpriteWalkthroughTests-Info.plist"; sourceTree = "<group>"; };
 		7834C53517DD06130017E1AC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7834C53717DD06130017E1AC /* SpriteWalkthroughTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpriteWalkthroughTests.m; sourceTree = "<group>"; };
+		7834C54117DD067A0017E1AC /* HelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloScene.h; sourceTree = "<group>"; };
+		7834C54217DD067A0017E1AC /* HelloScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloScene.m; sourceTree = "<group>"; };
+		7834C54417DD088B0017E1AC /* SpaceshipScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceshipScene.h; sourceTree = "<group>"; };
+		7834C54517DD088B0017E1AC /* SpaceshipScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceshipScene.m; sourceTree = "<group>"; };
+		7834C54717DD1F0E0017E1AC /* Asteroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Asteroid.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +136,11 @@
 				7834C51D17DD06130017E1AC /* SpriteViewController.m */,
 				7834C51F17DD06130017E1AC /* SpriteMyScene.h */,
 				7834C52017DD06130017E1AC /* SpriteMyScene.m */,
+				7834C54117DD067A0017E1AC /* HelloScene.h */,
+				7834C54217DD067A0017E1AC /* HelloScene.m */,
+				7834C54417DD088B0017E1AC /* SpaceshipScene.h */,
+				7834C54517DD088B0017E1AC /* SpaceshipScene.m */,
+				7834C54717DD1F0E0017E1AC /* Asteroid.png */,
 				7834C52217DD06130017E1AC /* Spaceship.png */,
 				7834C52417DD06130017E1AC /* Images.xcassets */,
 				7834C50E17DD06130017E1AC /* Supporting Files */,
@@ -243,6 +256,7 @@
 			files = (
 				7834C51217DD06130017E1AC /* InfoPlist.strings in Resources */,
 				7834C52517DD06130017E1AC /* Images.xcassets in Resources */,
+				7834C54817DD1F0E0017E1AC /* Asteroid.png in Resources */,
 				7834C52317DD06130017E1AC /* Spaceship.png in Resources */,
 				7834C51B17DD06130017E1AC /* Main.storyboard in Resources */,
 			);
@@ -263,8 +277,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7834C54317DD067A0017E1AC /* HelloScene.m in Sources */,
 				7834C51417DD06130017E1AC /* main.m in Sources */,
 				7834C52117DD06130017E1AC /* SpriteMyScene.m in Sources */,
+				7834C54617DD088B0017E1AC /* SpaceshipScene.m in Sources */,
 				7834C51817DD06130017E1AC /* SpriteAppDelegate.m in Sources */,
 				7834C51E17DD06130017E1AC /* SpriteViewController.m in Sources */,
 			);
