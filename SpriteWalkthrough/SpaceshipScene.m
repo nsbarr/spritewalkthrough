@@ -22,6 +22,12 @@
     }
 }
 
+- (SKSpriteNode *)outerSpace
+{
+    SKSpriteNode *space = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(4000,4000)];
+    space.name = @"space";
+    return space;
+}
 - (SKSpriteNode *)newLight
 {
     SKSpriteNode *light = [[SKSpriteNode alloc] initWithColor:[SKColor yellowColor] size:CGSizeMake(8,8)];
@@ -51,15 +57,6 @@
     //hull.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath: (__bridge CGPathRef)(aPath)];
     hull.physicsBody.dynamic = NO;
     
-    
-    
-//    SKAction *hover = [SKAction sequence:@[
- //                           [SKAction waitForDuration:1.0],
-  //                          [SKAction moveByX:100 y:50.0 duration:1.0],
-   //                         [SKAction waitForDuration:1.0],
-   //                         [SKAction moveByX:-100.0 y:-50 duration:1.0]]];
-   // [hull runAction: [SKAction repeatActionForever:hover]];
-    
     SKSpriteNode *light1 = [self newLight];
     light1.position = CGPointMake(-28.0, 6.0);
     [hull addChild:light1];
@@ -73,20 +70,33 @@
 - (void)touchesBegan:(NSSet *) touches withEvent:(UIEvent *)event
 {
     SKNode *spaceship = [self childNodeWithName:@"spaceship"];
-
-    if (spaceship != nil)
+  SKNode *space = [self childNodeWithName:@"space"];
+    UITouch *touch = [touches anyObject];
+    
+    NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
+    for (SKNode *node in nodes) {
+        if ((spaceship != nil) && (node == spaceship))
     {
         SKAction *hover = [SKAction sequence:@[
-                                               [SKAction waitForDuration:1.0],
+                                               [SKAction waitForDuration:0.2],
                                                [SKAction moveByX:100 y:50.0 duration:1.0],
                                                [SKAction waitForDuration:1.0],
                                                [SKAction moveByX:-100.0 y:-50 duration:1.0]]];
-        [spaceship runAction: [SKAction repeatAction: hover count:(2) ]];
+        [spaceship runAction: [SKAction repeatAction: hover count:(1) ]];
     }
-    
-    
+        else {
+          //  CGPoint teleportlocation = [touch locationInNode:space];
+            CGPoint pointToMove = [touch locationInNode: space];
+            
+          //  spaceship.position = CGPointMake(pointToMove.x, pointToMove.y);
+            SKAction *teleport = [SKAction sequence:@[
+                                                    [SKAction waitForDuration:0],
+                                                     [SKAction moveTo:pointToMove duration:1.0]]];
+           [spaceship runAction: [SKAction repeatAction: teleport count:(1)]];
+     //   }
+        }
+    }
 }
-
 
 static inline CGFloat skRandf() {
     return rand() / (CGFloat) RAND_MAX;
@@ -114,7 +124,10 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     self.backgroundColor = [SKColor blackColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
     SKSpriteNode *spaceship = [self newSpaceship];
+    SKSpriteNode *space = [self outerSpace];
+
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
+    [self addChild:space];
     [self addChild:spaceship];
     SKAction *makeRocks = [SKAction sequence: @[
                                                 [SKAction performSelector:@selector(addRock) onTarget:self],
