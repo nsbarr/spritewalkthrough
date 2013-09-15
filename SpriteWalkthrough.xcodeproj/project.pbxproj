@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		782FFD0E17E6366F0043C219 /* Shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 782FFD0D17E6366F0043C219 /* Shield.png */; };
 		7834C50617DD06130017E1AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7834C50517DD06130017E1AC /* Foundation.framework */; };
 		7834C50817DD06130017E1AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7834C50717DD06130017E1AC /* CoreGraphics.framework */; };
 		7834C50A17DD06130017E1AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7834C50917DD06130017E1AC /* UIKit.framework */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		782FFD0D17E6366F0043C219 /* Shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Shield.png; sourceTree = "<group>"; };
 		7834C50217DD06130017E1AC /* SpriteWalkthrough.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteWalkthrough.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7834C50517DD06130017E1AC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7834C50717DD06130017E1AC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -141,6 +143,7 @@
 				7834C54417DD088B0017E1AC /* SpaceshipScene.h */,
 				7834C54517DD088B0017E1AC /* SpaceshipScene.m */,
 				7834C54717DD1F0E0017E1AC /* Asteroid.png */,
+				782FFD0D17E6366F0043C219 /* Shield.png */,
 				7834C52217DD06130017E1AC /* Spaceship.png */,
 				7834C52417DD06130017E1AC /* Images.xcassets */,
 				7834C50E17DD06130017E1AC /* Supporting Files */,
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				782FFD0E17E6366F0043C219 /* Shield.png in Resources */,
 				7834C51217DD06130017E1AC /* InfoPlist.strings in Resources */,
 				7834C52517DD06130017E1AC /* Images.xcassets in Resources */,
 				7834C54817DD1F0E0017E1AC /* Asteroid.png in Resources */,
@@ -407,11 +411,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpriteWalkthrough/SpriteWalkthrough-Prefix.pch";
 				INFOPLIST_FILE = "SpriteWalkthrough/SpriteWalkthrough-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -421,11 +429,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpriteWalkthrough/SpriteWalkthrough-Prefix.pch";
 				INFOPLIST_FILE = "SpriteWalkthrough/SpriteWalkthrough-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -489,6 +501,7 @@
 				7834C53D17DD06130017E1AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7834C53E17DD06130017E1AC /* Build configuration list for PBXNativeTarget "SpriteWalkthroughTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +510,7 @@
 				7834C54017DD06130017E1AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -42,6 +42,13 @@
     return light;
 }
 
+- (SKSpriteNode *)newShield
+{
+ SKSpriteNode *shield = [SKSpriteNode spriteNodeWithImageNamed:@"Shield.png"];
+    shield.name = @"shield";
+    return shield;
+    
+}
 
 - (SKSpriteNode *)newSpaceship
 {
@@ -58,13 +65,15 @@
     //hull.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath: (__bridge CGPathRef)(aPath)];
     hull.physicsBody.dynamic = NO;
     
-    SKSpriteNode *light1 = [self newLight];
-    light1.position = CGPointMake(-28.0, 6.0);
-    [hull addChild:light1];
+   // SKSpriteNode *light1 = [self newLight];
+   // light1.position = CGPointMake(-28.0, 6.0);
+   // [hull addChild:light1];
     
-    SKSpriteNode *light2 = [self newLight];
-    light2.position = CGPointMake(28.0, 6.0);
-    [hull addChild:light2];
+   // SKSpriteNode *light2 = [self newLight];
+   // light2.position = CGPointMake(28.0, 6.0);
+   // [hull addChild:light2];
+    
+
     
     return hull; }
 
@@ -72,10 +81,12 @@
 {
     SKNode *spaceship = [self childNodeWithName:@"spaceship"];
     SKNode *space = [self childNodeWithName:@"space"];
+//    shield.name = @"shield";
+
     UITouch *touch = [touches anyObject];
     
     NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
-    for (SKNode *node in nodes) {
+    //for (SKNode *node in nodes) {
         if (![nodes containsObject:spaceship]) {
             //  CGPoint teleportlocation = [touch locationInNode:space];
             CGPoint pointToMove = [touch locationInNode: space];
@@ -89,12 +100,58 @@
 
         }
         else {
-            SKAction *hover = [SKAction sequence:@[
-                                                   [SKAction fadeOutWithDuration:0.25],
-                                                   [SKAction fadeInWithDuration:0.25]]];
-            [spaceship runAction: [SKAction repeatAction: hover count:(1) ]];
+         //   SKAction *hover = [SKAction sequence:@[
+           //                                        [SKAction fadeOutWithDuration:0.25],
+           //                                        [SKAction fadeInWithDuration:0.25]]];
+           // [spaceship runAction: [SKAction repeatAction: hover count:(1) ]];
+            SKNode *shield = [self childNodeWithName:@"shield"];
+            shield = [self newShield];
+            //shield.position = CGPointMake(0, 0);
+            [spaceship addChild:shield];
+            SKAction *fadeOut = [SKAction fadeOutWithDuration: 0.2];
+            SKAction *fadeIn = [SKAction fadeInWithDuration: 0.2];
+            SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
+            SKAction *pulseForever = [SKAction repeatActionForever:pulse];
+            [shield runAction: pulseForever];        //   break;
         }
-    }
+  //  }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    
+    SKNode *spaceship = [self childNodeWithName:@"spaceship"];
+    SKNode *space = [self childNodeWithName:@"space"];
+    //    shield.name = @"shield";
+    
+    UITouch *touch = [touches anyObject];
+    
+//    NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
+
+    CGPoint pointToMove = [touch locationInNode: space];
+    
+    //  spaceship.position = CGPointMake(pointToMove.x, pointToMove.y);
+    SKAction *teleport = [SKAction sequence:@[
+                                              [SKAction waitForDuration:0],
+                                              [SKAction moveTo:pointToMove duration:1.0]]];
+    [spaceship runAction: [SKAction repeatAction: teleport count:(1)]];
+
+}
+
+- (void)touchesEnded:(NSSet *) touches withEvent:(UIEvent *)event {
+    SKNode *spaceship = [self childNodeWithName:@"spaceship"];
+     //   SKNode *shield = [self childNodeWithName:@"shield"];
+     //   SKAction *removeShield = [SKAction removeFromParent];
+      //  [shield runAction: removeShield];
+    [spaceship removeAllChildren];
+    
+}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    SKNode *spaceship = [self childNodeWithName:@"spaceship"];
+    //   SKNode *shield = [self childNodeWithName:@"shield"];
+    //   SKAction *removeShield = [SKAction removeFromParent];
+    //  [shield runAction: removeShield];
+    [spaceship removeAllChildren];
 }
 
 static inline CGFloat skRandf() {
@@ -125,9 +182,11 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     SKSpriteNode *spaceship = [self newSpaceship];
     SKSpriteNode *space = [self outerSpace];
 
+
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
     [self addChild:space];
     [self addChild:spaceship];
+
     SKAction *makeRocks = [SKAction sequence: @[
                                                 [SKAction performSelector:@selector(addRock) onTarget:self],
                                                 [SKAction waitForDuration:0.10 withRange:0.15]
