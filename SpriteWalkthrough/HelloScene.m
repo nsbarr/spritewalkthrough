@@ -44,7 +44,11 @@
 - (void)touchesBegan:(NSSet *) touches withEvent:(UIEvent *)event
 {
     SKNode *helloNode = [self childNodeWithName:@"helloNode"];
-    if (helloNode != nil)
+    UITouch *touch = [touches anyObject];
+    
+    NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
+    for (SKNode *node in nodes) {
+    if ((helloNode != nil) && (node == helloNode))
     {
         helloNode.name = nil;
         SKAction *moveUp = [SKAction moveByX: 0 y: 100.0 duration: 0.5];
@@ -58,8 +62,8 @@
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration:0.5];
             [self.view presentScene:spaceshipScene transition:doors];
         }];    }
-}
-
+        }
+    }
 
 @end
 
