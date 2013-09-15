@@ -10,6 +10,7 @@
 
 @interface SpaceshipScene ()
 @property BOOL contentCreated;
+@property BOOL amiDone;
 @end
 
 @implementation SpaceshipScene
@@ -70,30 +71,28 @@
 - (void)touchesBegan:(NSSet *) touches withEvent:(UIEvent *)event
 {
     SKNode *spaceship = [self childNodeWithName:@"spaceship"];
-  SKNode *space = [self childNodeWithName:@"space"];
+    SKNode *space = [self childNodeWithName:@"space"];
     UITouch *touch = [touches anyObject];
     
     NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
     for (SKNode *node in nodes) {
-        if ((spaceship != nil) && (node == spaceship))
-    {
-        SKAction *hover = [SKAction sequence:@[
-                                               [SKAction waitForDuration:0.2],
-                                               [SKAction moveByX:100 y:50.0 duration:1.0],
-                                               [SKAction waitForDuration:1.0],
-                                               [SKAction moveByX:-100.0 y:-50 duration:1.0]]];
-        [spaceship runAction: [SKAction repeatAction: hover count:(1) ]];
-    }
-        else {
-          //  CGPoint teleportlocation = [touch locationInNode:space];
+        if (![nodes containsObject:spaceship]) {
+            //  CGPoint teleportlocation = [touch locationInNode:space];
             CGPoint pointToMove = [touch locationInNode: space];
             
-          //  spaceship.position = CGPointMake(pointToMove.x, pointToMove.y);
+            //  spaceship.position = CGPointMake(pointToMove.x, pointToMove.y);
             SKAction *teleport = [SKAction sequence:@[
-                                                    [SKAction waitForDuration:0],
-                                                     [SKAction moveTo:pointToMove duration:1.0]]];
-           [spaceship runAction: [SKAction repeatAction: teleport count:(1)]];
-     //   }
+                                                      [SKAction waitForDuration:0],
+                                                      [SKAction moveTo:pointToMove duration:1.0]]];
+            [spaceship runAction: [SKAction repeatAction: teleport count:(1)]];
+            //   }
+
+        }
+        else {
+            SKAction *hover = [SKAction sequence:@[
+                                                   [SKAction fadeOutWithDuration:0.25],
+                                                   [SKAction fadeInWithDuration:0.25]]];
+            [spaceship runAction: [SKAction repeatAction: hover count:(1) ]];
         }
     }
 }
