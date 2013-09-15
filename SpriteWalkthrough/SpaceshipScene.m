@@ -46,6 +46,12 @@
 {
  SKSpriteNode *shield = [SKSpriteNode spriteNodeWithImageNamed:@"Shield.png"];
     shield.name = @"shield";
+    shield.size = CGSizeMake(264,264);
+    //hull.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hull.size];
+    shield.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:shield.size.width/2];
+    //hull.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath: (__bridge CGPathRef)(aPath)];
+    shield.physicsBody.dynamic = NO;
+
     return shield;
     
 }
@@ -106,13 +112,16 @@
            // [spaceship runAction: [SKAction repeatAction: hover count:(1) ]];
             SKNode *shield = [self childNodeWithName:@"shield"];
             shield = [self newShield];
-            //shield.position = CGPointMake(0, 0);
+            shield.position = CGPointMake(0, 0);
             [spaceship addChild:shield];
+            spaceship.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:132];
+            spaceship.physicsBody.dynamic = NO;
             SKAction *fadeOut = [SKAction fadeOutWithDuration: 0.2];
             SKAction *fadeIn = [SKAction fadeInWithDuration: 0.2];
             SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
             SKAction *pulseForever = [SKAction repeatActionForever:pulse];
             [shield runAction: pulseForever];        //   break;
+
         }
   //  }
 }
@@ -143,6 +152,8 @@
      //   SKNode *shield = [self childNodeWithName:@"shield"];
      //   SKAction *removeShield = [SKAction removeFromParent];
       //  [shield runAction: removeShield];
+    spaceship.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:32];
+    spaceship.physicsBody.dynamic = NO;
     [spaceship removeAllChildren];
     
 }
@@ -151,6 +162,8 @@
     //   SKNode *shield = [self childNodeWithName:@"shield"];
     //   SKAction *removeShield = [SKAction removeFromParent];
     //  [shield runAction: removeShield];
+    spaceship.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:32];
+    spaceship.physicsBody.dynamic = NO;
     [spaceship removeAllChildren];
 }
 
@@ -181,6 +194,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     self.scaleMode = SKSceneScaleModeAspectFit;
     SKSpriteNode *spaceship = [self newSpaceship];
     SKSpriteNode *space = [self outerSpace];
+
 
 
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
