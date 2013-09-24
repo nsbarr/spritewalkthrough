@@ -11,7 +11,11 @@
 @interface SpaceshipScene ()
 @property BOOL contentCreated;
 @property BOOL amiDone;
+@property BOOL isShieldEnabled;
+@property BOOL hasShieldBarLoaded;
 @end
+
+CGFloat _shieldpercentage = 100.00f;
 
 @implementation SpaceshipScene
 - (void)didMoveToView:(SKView *)view
@@ -19,9 +23,14 @@
     if (!self.contentCreated)
     {
         [self createSceneContents];
+        _isShieldEnabled = FALSE;
         self.contentCreated = YES;
     }
+    
 }
+
+
+
 
 - (SKSpriteNode *)outerSpace
 {
@@ -45,7 +54,7 @@
 - (SKSpriteNode *)newShield
 {
  SKSpriteNode *shield = [SKSpriteNode spriteNodeWithImageNamed:@"Shield.png"];
-    shield.name = @"shield";
+    shield.name = @"shield""%";
     shield.size = CGSizeMake(264,264);
     //hull.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:hull.size];
     shield.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:shield.size.width/2];
@@ -55,6 +64,23 @@
     return shield;
     
 }
+
+- (SKLabelNode *)newScore
+{
+SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
+    scoreLabel.name = @"hector";
+scoreLabel.fontSize = 200;
+scoreLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+scoreLabel.fontColor = [SKColor colorWithHue:0 saturation:0 brightness:1 alpha:0.3];
+scoreLabel.text = @"00";
+scoreLabel.text = [NSString stringWithFormat:@"%02.0f", _shieldpercentage];
+
+
+    return scoreLabel;
+    
+}
+
+
 
 - (SKSpriteNode *)newSpaceship
 {
@@ -83,6 +109,8 @@
     
     return hull; }
 
+
+
 - (void)touchesBegan:(NSSet *) touches withEvent:(UIEvent *)event
 {
     SKNode *spaceship = [self childNodeWithName:@"spaceship"];
@@ -105,7 +133,7 @@
             //   }
 
         }
-        else {
+        else if (_shieldpercentage > 0) {
          //   SKAction *hover = [SKAction sequence:@[
            //                                        [SKAction fadeOutWithDuration:0.25],
            //                                        [SKAction fadeInWithDuration:0.25]]];
@@ -120,14 +148,18 @@
             SKAction *fadeIn = [SKAction fadeInWithDuration: 0.2];
             SKAction *pulse = [SKAction sequence:@[fadeOut,fadeIn]];
             SKAction *pulseForever = [SKAction repeatActionForever:pulse];
-            [shield runAction: pulseForever];        //   break;
+            [shield runAction: pulseForever];
+            _isShieldEnabled = TRUE;
+
+//   break;
 
         }
-  //  }
+        else{
+            return;
+        }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
     
     SKNode *spaceship = [self childNodeWithName:@"spaceship"];
     SKNode *space = [self childNodeWithName:@"space"];
@@ -144,10 +176,21 @@
                                               [SKAction waitForDuration:0],
                                               [SKAction moveTo:pointToMove duration:1.0]]];
     [spaceship runAction: [SKAction repeatAction: teleport count:(1)]];
+    
+    if(_shieldpercentage <= 0){
+          [spaceship removeAllChildren];
+    }
+    //NSArray *nodes = [self nodesAtPoint:[touch locationInNode:self]];
+    //if ([nodes containsObject:spaceship]) {
+    //    _isShieldEnabled = TRUE;
+
+//    }
+
 
 }
 
 - (void)touchesEnded:(NSSet *) touches withEvent:(UIEvent *)event {
+    _isShieldEnabled = FALSE;
     SKNode *spaceship = [self childNodeWithName:@"spaceship"];
      //   SKNode *shield = [self childNodeWithName:@"shield"];
      //   SKAction *removeShield = [SKAction removeFromParent];
@@ -158,6 +201,7 @@
     
 }
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    _isShieldEnabled = FALSE;
     SKNode *spaceship = [self childNodeWithName:@"spaceship"];
     //   SKNode *shield = [self childNodeWithName:@"shield"];
     //   SKAction *removeShield = [SKAction removeFromParent];
@@ -175,6 +219,7 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     return skRandf() * (high - low) + low;
 }
 
+
 - (void)addRock
 {
     //SKSpriteNode *rock = [[SKSpriteNode alloc] initWithColor:[SKColor brownColor] size:CGSizeMake(8,8)];
@@ -185,8 +230,23 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     rock.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:rock.size];
     rock.physicsBody.usesPreciseCollisionDetection = YES;
     [self addChild:rock];
+    if (_isShieldEnabled){
+        _shieldpercentage = _shieldpercentage - 1;
+        if(_shieldpercentage < 0){
+            _shieldpercentage = 0;
+        }
+    }
 }
 
+
+
+
+//-(void)calculateShieldHealth
+//{
+//  }
+
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+}
 
 - (void)createSceneContents
 {
@@ -194,24 +254,57 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
     self.scaleMode = SKSceneScaleModeAspectFit;
     SKSpriteNode *spaceship = [self newSpaceship];
     SKSpriteNode *space = [self outerSpace];
+    SKLabelNode *scoreLabel = [self newScore];
+
+    
+  //  SKLabelNode *shieldbar = [self shieldbar];
 
 
 
     spaceship.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-150);
     [self addChild:space];
     [self addChild:spaceship];
+    [self addChild:scoreLabel];
 
+//    [self addChild:shieldbar];
+
+    
     SKAction *makeRocks = [SKAction sequence: @[
                                                 [SKAction performSelector:@selector(addRock) onTarget:self],
                                                 [SKAction waitForDuration:0.10 withRange:0.15]
                                                 ]];
     [self runAction: [SKAction repeatActionForever:makeRocks]];
+    
+    _hasShieldBarLoaded = NO;
+    
+ //   SKAction *calculateShield = [SKAction performSelector:@selector(calculateShieldHealth) onTarget:self];
+ //   [self runAction: [SKAction repeatActionForever:calculateShield]];
+}
+
+-(void)update:(CFTimeInterval)currentTime
+{
+    //SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
+    //scoreLabel.text = [NSString stringWithFormat:@"%f", _shieldpercentage];
+   // SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
+    [self enumerateChildNodesWithName:@"hector" usingBlock:^(SKNode *node, BOOL *stop) {
+            [node removeFromParent];
+    }];
+
 }
 -(void)didSimulatePhysics
 {
+    SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
+    scoreLabel.text = [NSString stringWithFormat:@"%f", _shieldpercentage];
+    [self addChild:self.newScore];
+
+
     [self enumerateChildNodesWithName:@"rock" usingBlock:^(SKNode *node, BOOL *stop) {
         if (node.position.y < 0)
             [node removeFromParent];
     }];
+    [self enumerateChildNodesWithName:@"shieldHealth" usingBlock:^(SKNode *node, BOOL *stop) {
+        [node removeFromParent];
+    }];
+   // SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Courier-Bold"];
 }
 @end
