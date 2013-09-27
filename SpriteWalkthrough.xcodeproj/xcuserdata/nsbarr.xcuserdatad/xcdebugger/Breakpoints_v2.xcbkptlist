@@ -24,27 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpriteWalkthrough/SpaceshipScene.m"
-            timestampString = "401729981.369145"
+            timestampString = "402017884.917144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-touchesBegan:withEvent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpriteWalkthrough/SpaceshipScene.m"
-            timestampString = "401729981.369145"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-createSceneContents"
             landmarkType = "5">
          </BreakpointContent>
@@ -56,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpriteWalkthrough/SpaceshipScene.m"
-            timestampString = "401729981.369145"
+            timestampString = "402010511.81425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-touchesMoved:withEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -72,11 +56,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpriteWalkthrough/SpaceshipScene.m"
-            timestampString = "401729981.369145"
+            timestampString = "402010511.81425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "-didBeginContact:"
             landmarkType = "5">
          </BreakpointContent>

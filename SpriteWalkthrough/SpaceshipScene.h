@@ -9,6 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface SpaceshipScene : SKScene
-
-
+@property NSMutableArray *explosionTextures;
 @end
