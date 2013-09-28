@@ -7,12 +7,15 @@
 //
 
 #import "SpaceshipScene.h"
+#import "GoodbyeScene.h"
+
 
 @interface SpaceshipScene () <SKPhysicsContactDelegate>
 @property BOOL contentCreated;
 @property BOOL amiDone;
 @property BOOL isShieldEnabled;
 @end
+
 
 CGFloat _shieldpercentage = 100.00f;
 CGFloat _healthpercentage = 100.00f;
@@ -29,10 +32,13 @@ static const uint32_t shieldCategory      =  0x1 << 2;
     {
         [self createSceneContents];
         _isShieldEnabled = FALSE;
+        _healthpercentage = 100;
+        _shieldpercentage = 100;
         self.contentCreated = YES;
-     
+        
 
     }
+   
     self.physicsWorld.contactDelegate = self;
 
 }
@@ -47,7 +53,7 @@ static const uint32_t shieldCategory      =  0x1 << 2;
         _explosionTextures = [NSMutableArray new];
         for (NSString *name in textureNames) {
             SKTexture *texture = [explosionAtlas textureNamed:name];
-            [_explosionTextures addObject:texture];
+            [_explosionTextures insertObject:texture atIndex:0];
         }
     }
         return self;
@@ -285,11 +291,18 @@ static inline CGFloat skRand(CGFloat low, CGFloat high) {
             [explosion runAction:[SKAction sequence:@[explosionAction,remove]]];
                 // take damage
             _healthpercentage = _healthpercentage - 5;
+            if (_healthpercentage == 0){
+                SKScene *goodbyeScene  = [[GoodbyeScene alloc] initWithSize:self.size];
+                SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration:0.5];
+                [self.view presentScene:goodbyeScene transition:doors];
+            }
         }
+    
 
 
 
-        
+
+
         
         
         

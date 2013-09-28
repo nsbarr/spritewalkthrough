@@ -7,7 +7,6 @@
 //
 
 #import "SpriteViewController.h"
-#import "SpriteMyScene.h"
 #import <SpriteKit/SpriteKit.h>
 #import "HelloScene.h"
 

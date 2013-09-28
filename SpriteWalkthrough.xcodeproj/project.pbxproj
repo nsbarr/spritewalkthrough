@@ -18,7 +18,6 @@
 		7834C51817DD06130017E1AC /* SpriteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C51717DD06130017E1AC /* SpriteAppDelegate.m */; };
 		7834C51B17DD06130017E1AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7834C51917DD06130017E1AC /* Main.storyboard */; };
 		7834C51E17DD06130017E1AC /* SpriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C51D17DD06130017E1AC /* SpriteViewController.m */; };
-		7834C52117DD06130017E1AC /* SpriteMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C52017DD06130017E1AC /* SpriteMyScene.m */; };
 		7834C52517DD06130017E1AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7834C52417DD06130017E1AC /* Images.xcassets */; };
 		7834C52C17DD06130017E1AC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7834C52B17DD06130017E1AC /* XCTest.framework */; };
 		7834C52D17DD06130017E1AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7834C50517DD06130017E1AC /* Foundation.framework */; };
@@ -28,9 +27,8 @@
 		7834C54317DD067A0017E1AC /* HelloScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C54217DD067A0017E1AC /* HelloScene.m */; };
 		7834C54617DD088B0017E1AC /* SpaceshipScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7834C54517DD088B0017E1AC /* SpaceshipScene.m */; };
 		7834C54817DD1F0E0017E1AC /* Asteroid.png in Resources */ = {isa = PBXBuildFile; fileRef = 7834C54717DD1F0E0017E1AC /* Asteroid.png */; };
-		7872B99C17F5F091004A153E /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7872B99A17F5F091004A153E /* MyParticle.sks */; };
-		7872B99D17F5F091004A153E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7872B99B17F5F091004A153E /* spark.png */; };
 		7872B99F17F5FD4A004A153E /* Explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7872B99E17F5FD4A004A153E /* Explosion.atlas */; };
+		7872B9A217F6589C004A153E /* GoodbyeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7872B9A117F6589C004A153E /* GoodbyeScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +58,6 @@
 		7834C51A17DD06130017E1AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7834C51C17DD06130017E1AC /* SpriteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpriteViewController.h; sourceTree = "<group>"; };
 		7834C51D17DD06130017E1AC /* SpriteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpriteViewController.m; sourceTree = "<group>"; };
-		7834C51F17DD06130017E1AC /* SpriteMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpriteMyScene.h; sourceTree = "<group>"; };
-		7834C52017DD06130017E1AC /* SpriteMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpriteMyScene.m; sourceTree = "<group>"; };
 		7834C52417DD06130017E1AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7834C52A17DD06130017E1AC /* SpriteWalkthroughTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpriteWalkthroughTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7834C52B17DD06130017E1AC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -73,9 +69,9 @@
 		7834C54417DD088B0017E1AC /* SpaceshipScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpaceshipScene.h; sourceTree = "<group>"; };
 		7834C54517DD088B0017E1AC /* SpaceshipScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpaceshipScene.m; sourceTree = "<group>"; };
 		7834C54717DD1F0E0017E1AC /* Asteroid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Asteroid.png; sourceTree = "<group>"; };
-		7872B99A17F5F091004A153E /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
-		7872B99B17F5F091004A153E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		7872B99E17F5FD4A004A153E /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
+		7872B9A017F6589C004A153E /* GoodbyeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodbyeScene.h; sourceTree = "<group>"; };
+		7872B9A117F6589C004A153E /* GoodbyeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodbyeScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +102,6 @@
 		7834C4F917DD06130017E1AC = {
 			isa = PBXGroup;
 			children = (
-				7872B99A17F5F091004A153E /* MyParticle.sks */,
-				7872B99B17F5F091004A153E /* spark.png */,
 				7834C50D17DD06130017E1AC /* SpriteWalkthrough */,
 				7834C53117DD06130017E1AC /* SpriteWalkthroughTests */,
 				7834C50417DD06130017E1AC /* Frameworks */,
@@ -145,12 +139,12 @@
 				7834C51917DD06130017E1AC /* Main.storyboard */,
 				7834C51C17DD06130017E1AC /* SpriteViewController.h */,
 				7834C51D17DD06130017E1AC /* SpriteViewController.m */,
-				7834C51F17DD06130017E1AC /* SpriteMyScene.h */,
-				7834C52017DD06130017E1AC /* SpriteMyScene.m */,
 				7834C54117DD067A0017E1AC /* HelloScene.h */,
 				7834C54217DD067A0017E1AC /* HelloScene.m */,
 				7834C54417DD088B0017E1AC /* SpaceshipScene.h */,
 				7834C54517DD088B0017E1AC /* SpaceshipScene.m */,
+				7872B9A017F6589C004A153E /* GoodbyeScene.h */,
+				7872B9A117F6589C004A153E /* GoodbyeScene.m */,
 				7834C54717DD1F0E0017E1AC /* Asteroid.png */,
 				782FFD0F17E6630E0043C219 /* Spaceship.png */,
 				782FFD1117E6631E0043C219 /* Shield.png */,
@@ -271,8 +265,6 @@
 				7834C52517DD06130017E1AC /* Images.xcassets in Resources */,
 				7834C54817DD1F0E0017E1AC /* Asteroid.png in Resources */,
 				7872B99F17F5FD4A004A153E /* Explosion.atlas in Resources */,
-				7872B99C17F5F091004A153E /* MyParticle.sks in Resources */,
-				7872B99D17F5F091004A153E /* spark.png in Resources */,
 				7834C51B17DD06130017E1AC /* Main.storyboard in Resources */,
 				782FFD1217E6631E0043C219 /* Shield.png in Resources */,
 			);
@@ -295,9 +287,9 @@
 			files = (
 				7834C54317DD067A0017E1AC /* HelloScene.m in Sources */,
 				7834C51417DD06130017E1AC /* main.m in Sources */,
-				7834C52117DD06130017E1AC /* SpriteMyScene.m in Sources */,
 				7834C54617DD088B0017E1AC /* SpaceshipScene.m in Sources */,
 				7834C51817DD06130017E1AC /* SpriteAppDelegate.m in Sources */,
+				7872B9A217F6589C004A153E /* GoodbyeScene.m in Sources */,
 				7834C51E17DD06130017E1AC /* SpriteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,7 +423,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -449,7 +441,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
